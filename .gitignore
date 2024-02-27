@@ -1,0 +1,21 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+*.pyc
+
+# Streamlit specific
+*.pyc
+__pycache__/
+.cache/
+.streamlit/
+
+# Transformers specific
+transformers/
+
+# Project specific
+__pycache__/
