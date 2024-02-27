@@ -10,6 +10,16 @@ pip install -r requirements.txt
 
 ## Usage
 
+Dowloading the model take some time at first execution!
+
 ```bash
 streamlit run <filename.py>
 ```
+
+
+
+
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
