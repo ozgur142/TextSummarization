@@ -1,9 +1,8 @@
 import streamlit as st
-import re
-from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+from transformers import T5Tokenizer, T5ForConditionalGeneration
 
-WHITESPACE_HANDLER = lambda k: re.sub('\s+', ' ', re.sub('\n+', ' ', k.strip()))
-
+tokenizer = T5Tokenizer.from_pretrained("google/flan-t5-base")
+model = T5ForConditionalGeneration.from_pretrained("google/flan-t5-base")
 
 
 st.title("Text Summarization")
@@ -11,34 +10,16 @@ st.title("Text Summarization")
 user_input = st.text_area("Enter your text to summarize:")
 
 if st.button("Summarize"):
-    model_name = "csebuetnlp/mT5_multilingual_XLSum"
-    tokenizer = AutoTokenizer.from_pretrained(model_name)
-    model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
+    if not user_input:
+            st.error("Please enter some text to summarize.")
+            st.stop()
+    
+    input_ids = tokenizer(user_input, return_tensors="pt", max_length=512, truncation=True).input_ids
+    summary_ids = model.generate(input_ids, max_length=140, num_beams=2, length_penalty=1.0, early_stopping=True)
+    
 
-    # Tokenize and generate summary
-    input_ids = tokenizer(
-        [WHITESPACE_HANDLER(user_input)],
-        return_tensors="pt",
-        padding="max_length",
-        truncation=True,
-        max_length=512
-    )["input_ids"]
-
-    output_ids = model.generate(
-        input_ids=input_ids,
-        max_length=140,
-        no_repeat_ngram_size=2,
-        num_beams=4
-    )[0]
-
-    summary = tokenizer.decode(
-        output_ids,
-        skip_special_tokens=True,
-        clean_up_tokenization_spaces=False
-    )
-
+    summary = tokenizer.decode(summary_ids[0], skip_special_tokens=True)
+    
     st.subheader("Generated Summary:")
     st.write(summary)
-
-
 
