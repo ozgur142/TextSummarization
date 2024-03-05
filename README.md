@@ -31,6 +31,7 @@ pip install -r requirements.txt
 ```
 
 Run:
+
 !!!Dowloading the model take some time at first execution!
 
 ```bash
