@@ -28,6 +28,7 @@ pip install -r requirements.txt
 
 ## Usage
 
+### Using Streamlit Directly
 Dowloading the model take some time at first execution!
 
 ```bash
@@ -36,8 +37,44 @@ streamlit run <filename\>.py
 Replace 'filename' with either 'bart' or 't5'.
 
 
+### Using Docker
 
+Build the Docker image:
 
+for bart:
+```bash
+docker build -t image_bart -f Dockerfile_bart .
+```
+
+for T5:
+
+for bart:
+```bash
+docker build -t image_t5 -f Dockerfile_t5.
+```
+
+Run the Docker container:
+for bart:
+```bash
+docker run -p 8501:8501 --name container_bart -d image_bart
+```
+for t5:
+```bash
+docker run -p 8501:8501 --name container_t5 -d image_t5
+```
+
+Access the app in your browser:
+- Network URL: http://localhost:8501
+- External URL: http://your_host_ip:8501
+
+Stop the Docker container:
+```bash
+docker stop container_bart
+```
+or
+```bash
+docker stop container_t5
+```
 
 
 ## License

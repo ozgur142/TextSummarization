@@ -19,3 +19,7 @@ transformers/
 
 # Project specific
 __pycache__/
+
+
+# Docker-related files generated during build
+.docker/
