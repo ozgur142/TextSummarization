@@ -53,7 +53,7 @@ docker build -t image_bart -f Dockerfile_bart .
 
 for T5:
 ```bash
-docker build -t image_t5 -f Dockerfile_t5.
+docker build -t image_t5 -f Dockerfile_t5 .
 ```
 
 Run the Docker container:
