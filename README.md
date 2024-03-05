@@ -32,9 +32,14 @@ pip install -r requirements.txt
 Dowloading the model take some time at first execution!
 
 ```bash
-streamlit run <filename\>.py
+streamlit run bart.py
 ```
-Replace 'filename' with either 'bart' or 't5'.
+
+or
+
+```bash
+streamlit run t5.py
+```
 
 
 ### Using Docker
@@ -47,13 +52,12 @@ docker build -t image_bart -f Dockerfile_bart .
 ```
 
 for T5:
-
-for bart:
 ```bash
 docker build -t image_t5 -f Dockerfile_t5.
 ```
 
 Run the Docker container:
+
 for bart:
 ```bash
 docker run -p 8501:8501 --name container_bart -d image_bart
