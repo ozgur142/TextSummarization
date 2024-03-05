@@ -20,16 +20,18 @@ Despite their performance, they remain lightweight enough to be executable on my
 
 
 
-## Install Necessary Libraries
+## Usage
+
+### Using Streamlit Directly
+
+Install Necessary Libraries
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## Usage
-
-### Using Streamlit Directly
-Dowloading the model take some time at first execution!
+Run:
+!!!Dowloading the model take some time at first execution!
 
 ```bash
 streamlit run bart.py
